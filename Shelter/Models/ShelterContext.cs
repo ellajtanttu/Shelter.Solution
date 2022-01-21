@@ -8,9 +8,6 @@ namespace Shelter.Models
             : base(options)
         {
         }
-
-        // public DbSet<Animal> Animals { get; set; }
-        public DbSet<Dog> Dogs { get; set; }
-        public DbSet<Cat> Cats { get; set; }
+        public DbSet<Pet> Pets { get; set; }
     }
 }

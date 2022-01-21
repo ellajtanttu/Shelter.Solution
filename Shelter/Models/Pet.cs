@@ -1,8 +1,9 @@
-namespace CretaceousPark.Models
+namespace Shelter.Models
 {
-  public class Dog
+  public class Pet
   {
-    public int CatId { get; set; }
+    public int PetId { get; set; }
+    public string Type { get; set; }
     public string Name { get; set; }
     public string Breed { get; set; }
     public int Age { get; set; }
