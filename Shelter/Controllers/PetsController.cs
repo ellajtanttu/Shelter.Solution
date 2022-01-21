@@ -1,5 +1,8 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Shelter.Models;
@@ -38,6 +41,36 @@ namespace Shelter.Controllers
         return pet;
     }
 
+    // PUT: api/Pets/5
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Put(int id, Pet pet)
+    {
+      if (id != pet.PetId)
+      {
+        return BadRequest();
+      }
+
+      _db.Entry(pet).State = EntityState.Modified;
+
+      try
+      {
+        await _db.SaveChangesAsync();
+      }
+      catch (DbUpdateConcurrencyException)
+      {
+        if (!PetExists(id))
+        {
+          return NotFound();
+        }
+        else
+        {
+          throw;
+        }
+      }
+
+      return NoContent();
+    }
+
     // POST api/pets
     [HttpPost]
     public async Task<ActionResult<Pet>> Post(Pet pet)
@@ -46,6 +79,10 @@ namespace Shelter.Controllers
       await _db.SaveChangesAsync();
 
       return CreatedAtAction(nameof(GetPet), new { id = pet.PetId }, pet);
+    }
+    private bool PetExists(int id)
+    {
+      return _db.Pets.Any(e => e.PetId == id);
     }
   }
 }
