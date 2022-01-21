@@ -71,6 +71,22 @@ namespace Shelter.Controllers
       return NoContent();
     }
 
+    // DELETE: api/Pets/5
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeletePet(int id)
+    {
+      var pet = await _db.Pets.FindAsync(id);
+      if (pet == null)
+      {
+        return NotFound();
+      }
+
+      _db.Pets.Remove(pet);
+      await _db.SaveChangesAsync();
+
+      return NoContent();
+    }
+
     // POST api/pets
     [HttpPost]
     public async Task<ActionResult<Pet>> Post(Pet pet)
