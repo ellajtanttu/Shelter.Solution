@@ -76,7 +76,7 @@ namespace Shelter.Controllers
     public async Task<IActionResult> DeletePet(int id)
     {
       var pet = await _db.Pets.FindAsync(id);
-      if (pet == null)
+      if (pet == null) 
       {
         return NotFound();
       }
