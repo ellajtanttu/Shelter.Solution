@@ -27,6 +27,12 @@ namespace Shelter.Controllers
   [ApiController]
   public class PetsV2Controller : ControllerBase
   {
+    private readonly ShelterContext _db;
+
+    public PetsV2Controller(ShelterContext db)
+    {
+      _db = db;
+    }
 
     // GET api/pets
     [HttpGet]
