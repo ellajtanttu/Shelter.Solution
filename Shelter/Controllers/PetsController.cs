@@ -20,14 +20,12 @@ namespace Shelter.Controllers
       _db = db;
     }
 
-    // GET api/pets
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Pet>>> Get()
     {
       return await _db.Pets.ToListAsync();
     }
 
-    // GET: api/Pets/5
     [HttpGet("{id}")]
     public async Task<ActionResult<Pet>> GetPet(int id)
     {
@@ -41,7 +39,6 @@ namespace Shelter.Controllers
         return pet;
     }
 
-    // PUT: api/Pets/5
     [HttpPut("{id}")]
     public async Task<IActionResult> Put(int id, Pet pet)
     {
@@ -71,7 +68,6 @@ namespace Shelter.Controllers
       return NoContent();
     }
 
-    // DELETE: api/Pets/5
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeletePet(int id)
     {
@@ -87,7 +83,6 @@ namespace Shelter.Controllers
       return NoContent();
     }
 
-    // POST api/pets
     [HttpPost]
     public async Task<ActionResult<Pet>> Post(Pet pet)
     {
