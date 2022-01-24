@@ -10,7 +10,7 @@ using Shelter.Models;
 namespace Shelter.Controllers
 {
   [ApiVersion("1.0")]
-  [Route("api/{v:apiVersion}/[controller]")]
+  [Route("api/[controller]")]
   [ApiController]
   public class PetsV1Controller : ControllerBase
   {
@@ -23,7 +23,7 @@ namespace Shelter.Controllers
   }
 
   [ApiVersion("2.0")]
-  [Route("api/{v:apiVersion}/[controller]")]
+  [Route("api/[controller]")]
   [ApiController]
   public class PetsV2Controller : ControllerBase
   {
